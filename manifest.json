@@ -1,0 +1,8 @@
+{
+   "name": "No Friend Badges",
+   "description": "Hides friend request badges all over the app. (Taskbar icon, tray icon, home button, friends tab and optionally the pending tab)",
+   "author": "eternal",
+   "version": "1.0.0",
+   "discord": "shnvz5ryAt",
+   "license": "MIT"
+}
