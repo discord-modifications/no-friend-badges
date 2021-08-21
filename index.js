@@ -24,13 +24,16 @@ module.exports = class NoFriendBadges extends Plugin {
       inject('no-fr-badges-pending', Item.prototype, 'render', (args, res) => {
          if (this.settings.get('showPending', true) && res.props['aria-controls'] == 'PENDING-tab') {
             if (!Array.isArray(res.props.children)) res.props.children = [res.props.children];
-            res.props.children[1] = React.createElement(NumberBadge, {
-               count: (Relationships.__powercordOriginal_getPendingCount ?? Relationships.getPendingCount)(),
-               className: Classes.badge,
-               style: {
-                  paddingRight: 0
-               }
-            });
+            const count = (Relationships.__powercordOriginal_getPendingCount ?? Relationships.getPendingCount)();
+            if (count > 0) {
+               res.props.children[1] = React.createElement(NumberBadge, {
+                  count,
+                  className: Classes.badge,
+                  style: {
+                     paddingRight: 0
+                  }
+               });
+            }
          }
 
          return res;
